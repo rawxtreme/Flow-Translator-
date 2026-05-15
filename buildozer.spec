@@ -24,8 +24,8 @@ android.ndk = 25b
 
 android.accept_sdk_license = True
 
-presplash.filename = assets/1778821152699.png
-icon.filename = assets/1778821152699.png
+presplash.filename = assets/images/logo.png
+icon.filename = assets/images/logo.png
 
 splash_color = #101820
 
