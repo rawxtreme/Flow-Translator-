@@ -1,0 +1,93 @@
+# =============================================
+#   History Screen KV
+# =============================================
+
+<HistoryScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.02, 0.02, 0.08, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 0
+
+        # ---- TOP BAR ----
+        BoxLayout:
+            size_hint_y: None
+            height: '56dp'
+            padding: '16dp', '8dp'
+            canvas.before:
+                Color:
+                    rgba: 0.06, 0.06, 0.14, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Button:
+                size_hint: None, None
+                size: '36dp', '36dp'
+                background_color: 0, 0, 0, 0
+                on_press: root.go_back()
+                Label:
+                    text: '←'
+                    font_size: '20sp'
+                    color: 0.95, 0.95, 1.0, 1
+                    center: self.parent.center
+
+            Label:
+                text: '  Translation History'
+                font_size: '18sp'
+                bold: True
+                color: 0.95, 0.95, 1.0, 1
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+
+            Button:
+                size_hint: None, None
+                size: '60dp', '36dp'
+                background_color: 0, 0, 0, 0
+                on_press: root.clear_all_history()
+                Label:
+                    text: 'Clear'
+                    font_size: '12sp'
+                    color: 1.0, 0.27, 0.60, 1
+                    center: self.parent.center
+
+        # ---- EMPTY STATE ----
+        BoxLayout:
+            orientation: 'vertical'
+            opacity: root.empty_opacity
+            size_hint_y: 1 if not root.history_data else 0
+            padding: '32dp'
+            spacing: '16dp'
+            pos_hint: {'center_y': 0.5}
+
+            Label:
+                text: '🕐'
+                font_size: '48sp'
+                halign: 'center'
+
+            Label:
+                text: 'No translations yet!\nTranslate something first 🚀'
+                font_size: '15sp'
+                color: 0.50, 0.50, 0.70, 1
+                halign: 'center'
+                text_size: self.size
+
+        # ---- HISTORY LIST ----
+        ScrollView:
+            do_scroll_x: False
+            opacity: root.list_opacity
+
+            BoxLayout:
+                id: history_list
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: '12dp'
+                spacing: '10dp'
+

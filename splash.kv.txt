@@ -1,0 +1,128 @@
+# =============================================
+#   Splash Screen KV - Premium Animated UI
+# =============================================
+
+<SplashScreen>:
+    canvas.before:
+        # Deep space gradient background
+        Color:
+            rgba: 0.02, 0.02, 0.08, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        # Gradient overlay (darker at top, lighter at bottom)
+        Color:
+            rgba: 0.08, 0.04, 0.18, 0.7
+        Rectangle:
+            pos: self.pos
+            size: self.width, self.height * 0.5
+        # Subtle star particles (static decorative circles)
+        Color:
+            rgba: 1, 1, 1, 0.04
+        Ellipse:
+            pos: self.width * 0.1, self.height * 0.8
+            size: 3, 3
+        Ellipse:
+            pos: self.width * 0.8, self.height * 0.75
+            size: 2, 2
+        Ellipse:
+            pos: self.width * 0.3, self.height * 0.9
+            size: 4, 4
+        Ellipse:
+            pos: self.width * 0.7, self.height * 0.85
+            size: 2, 2
+        Ellipse:
+            pos: self.width * 0.5, self.height * 0.15
+            size: 3, 3
+        Ellipse:
+            pos: self.width * 0.15, self.height * 0.35
+            size: 2, 2
+        Ellipse:
+            pos: self.width * 0.88, self.height * 0.45
+            size: 3, 3
+
+    FloatLayout:
+        # ---- GLOW EFFECT BEHIND LOGO ----
+        Widget:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.58}
+            size_hint: None, None
+            size: 200, 200
+            canvas:
+                Color:
+                    rgba: 0.29, 0.56, 1.0, root.glow_alpha * 0.3
+                Ellipse:
+                    pos: self.x - 40, self.y - 40
+                    size: self.width + 80, self.height + 80
+                Color:
+                    rgba: 0.52, 0.24, 1.0, root.glow_alpha * 0.2
+                Ellipse:
+                    pos: self.x - 70, self.y - 70
+                    size: self.width + 140, self.height + 140
+
+        # ---- LOGO / ICON ----
+        Image:
+            id: logo_img
+            source: 'assets/images/logo.png'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.58}
+            size_hint: None, None
+            size: 120 * root.logo_scale, 120 * root.logo_scale
+            allow_stretch: True
+            keep_ratio: True
+
+        # ---- SPINNING RING around logo ----
+        Widget:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.58}
+            size_hint: None, None
+            size: 160, 160
+            canvas:
+                Color:
+                    rgba: 0.29, 0.56, 1.0, 0.6
+                Line:
+                    circle: self.center_x, self.center_y, 80, root.ring_angle, root.ring_angle + 90
+                    width: 2
+                Color:
+                    rgba: 0.52, 0.24, 1.0, 0.4
+                Line:
+                    circle: self.center_x, self.center_y, 80, root.ring_angle + 180, root.ring_angle + 270
+                    width: 2
+
+        # ---- APP TITLE ----
+        Label:
+            text: 'Translation App'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.38}
+            size_hint: None, None
+            size: self.texture_size
+            font_size: '30sp'
+            bold: True
+            color: 1, 1, 1, root.title_opacity
+            canvas.before:
+                # Gradient text effect using color
+                Color:
+                    rgba: 0.29, 0.56, 1.0, root.title_opacity
+
+        # ---- CREATOR CREDIT ----
+        Label:
+            text: 'Made by Aaditya Shukla'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.30}
+            size_hint: None, None
+            size: self.texture_size
+            font_size: '15sp'
+            color: 0.65, 0.65, 0.85, root.subtitle_opacity
+
+        # ---- WELCOME TEXT ----
+        Label:
+            text: 'Welcome to Translation App'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.22}
+            size_hint: None, None
+            size: self.texture_size
+            font_size: '13sp'
+            color: 0.40, 0.80, 1.0, root.subtitle_opacity * 0.8
+
+        # ---- BOTTOM TAGLINE ----
+        Label:
+            text: 'Translate • Speak • Learn'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.12}
+            size_hint: None, None
+            size: self.texture_size
+            font_size: '11sp'
+            color: 0.50, 0.50, 0.70, root.subtitle_opacity * 0.6

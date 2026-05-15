@@ -1,0 +1,56 @@
+[app]
+
+# =============================================
+#  Buildozer Spec - Translation App
+#  by Aaditya Shukla
+# =============================================
+
+# App basic info
+title = Translation App
+package.name = translationapp
+package.domain = com.aadityashukla
+
+source.dir = .
+source.include_exts = py,png,jpg,kv,atlas,db,ttf,mp3,wav,ogg
+
+version = 1.0.0
+
+# App requirements
+requirements = python3,kivy==2.3.0,kivymd,deep-translator,requests,pillow,pyttsx3
+
+# Android specific
+android.permissions = INTERNET, RECORD_AUDIO, VIBRATE, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
+
+# Orientation
+orientation = portrait
+
+# Screen fullscreen
+fullscreen = 0
+
+# Android API targets
+android.api = 33
+android.minapi = 21
+android.ndk = 25b
+android.sdk = 33
+android.ndk_api = 21
+android.accept_sdk_license = True
+
+# Icons (replace with your actual logo file)
+android.icon.filename = %(source.dir)s/assets/images/logo.png
+
+# Presplash (loading screen image for very first launch)
+android.presplash.filename = %(source.dir)s/assets/images/splash.png
+android.presplash_color = #08040F
+
+# App architecture
+android.archs = arm64-v8a, armeabi-v7a
+
+# p4a branch
+p4a.branch = master
+
+# Log level
+log_level = 2
+
+[buildozer]
+log_level = 2
+warn_on_root = 1
