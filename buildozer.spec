@@ -9,7 +9,7 @@ source.include_exts = py,png,jpg,kv,atlas,ttf,json
 
 version = 1.0
 
-requirements = python3,kivy,kivymd,googletrans==4.0.0rc1,requests
+requirements = python3,kivy,kivymd,requests
 
 orientation = portrait
 
