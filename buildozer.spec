@@ -9,7 +9,7 @@ source.include_exts = py,png,jpg,kv,atlas,ttf,json
 
 version = 1.0
 
-requirements = python3==3.10.11,kivy==2.2.1,requests
+requirements = python3,kivy,requests
 
 orientation = portrait
 
@@ -20,7 +20,7 @@ android.permissions = INTERNET,RECORD_AUDIO,VIBRATE
 android.api = 33
 android.minapi = 21
 android.sdk = 33
-android.ndk = 25b
+android.ndk = 23b
 
 android.accept_sdk_license = True
 
